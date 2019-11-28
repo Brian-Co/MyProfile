@@ -1,6 +1,6 @@
 # MyProfile
 
-Test app to create an account and check user profile with features including:
+A test app to create an account and check user profile with features including:
 
 - Create account screen with email and password formatting checks.
 - tableView with dynamically sized tableView cells.
