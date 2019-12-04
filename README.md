@@ -9,3 +9,5 @@ A test app to create an account and check user profile with features including:
 - POST and GET URLRequest to create and retreive the account and infos on server.
 - HASH_256 email and password
 - Cool animations all over using Core Animation.
+
+![Test Image 4](https://github.com/Brian-Co/MyProfile/blob/master/IMG_0427.PNG)
