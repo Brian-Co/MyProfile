@@ -1,6 +1,6 @@
 //
 //  MyProfileController.swift
-//  Chandago Test
+//  MyProfile
 //
 //  Created by Brian Corrieri on 31/10/2019.
 //  Copyright © 2019 FairTrip. All rights reserved.
@@ -23,9 +23,8 @@ class MyProfileController: UIViewController {
     @IBOutlet weak var separatorLine1: UIView!
     @IBOutlet weak var separatorLine2: UIView!
     
-    var profile: Profile?
-    var isProfileVisible = true
-    
+    private var viewModel: MyProfileControllerViewModel!
+        
     lazy var pulseLayer: CAShapeLayer = {
         let pulseLayer = CAShapeLayer()
         pulseLayer.lineWidth = 7
@@ -48,18 +47,8 @@ class MyProfileController: UIViewController {
         separatorLine1.layer.borderColor = UIColor.lightGray.cgColor
         separatorLine2.layer.borderWidth = 1.0
         separatorLine2.layer.borderColor = UIColor.lightGray.cgColor
-                
-        HelperMethods.shared.getData(urlString: "https://lfdjdev.appconsent.io/user") { data in
-            if let data = data {
-                if let profile = self.decodeJSONProfile(data: data) {
-                    self.profile = profile
-                    DispatchQueue.main.async {
-                        self.configureProfile()
-                    }
-                    print("got profile \(profile)")
-                }
-            }
-        }
+        
+        viewModel = MyProfileControllerViewModel(delegate: self)
         
     }
     
@@ -85,63 +74,38 @@ class MyProfileController: UIViewController {
         pulseLayer.path = circularPath.cgPath
         button.layer.addSublayer(pulseLayer)
         animatePulseLayer()
-        if profile != nil {
-            changeStatus()
+        
+        if viewModel.profile != nil {
+            viewModel.changeStatus()
         }
         
 //        let defaults = UserDefaults.standard
 //        defaults.set(false, forKey: "isUserRegistered")
     }
     
-    func decodeJSONProfile(data: Data) -> Profile? {
-        let decoder = JSONDecoder()
-        if let profile = try? decoder.decode(Profile.self, from: data) {
-            return profile
+}
+
+extension MyProfileController: MyProfileControllerViewModelDelegate {
+    
+    func configureProfile(with profile: Profile) {
+        username.text = profile.username
+        email.text = profile.email
+        profileCompletionView.animateProfileCompletion(profileCompletion: profile.profileCompletion)
+        street.text = profile.adress.street
+        city.text = profile.adress.city
+    }
+    
+    func updateButton(_ isProfileVisible: Bool) {
+        if !isProfileVisible {
+            self.button.backgroundColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
+            self.buttonLabel.text = "Profile hidden, tap to show"
         } else {
-            return nil
-        }
-    }
-    
-    func configureProfile() {
-        if let profile = self.profile {
-            username.text = profile.username
-            email.text = profile.email
-            profileCompletionView.animateProfileCompletion(profileCompletion: profile.profileCompletion)
-            street.text = profile.adress.street
-            city.text = profile.adress.city
-        }
-    }
-    
-    func changeStatus() {
-        let IDManager = ASIdentifierManager.shared()
-        let adID = IDManager.advertisingIdentifier.description
-        let timestamp = Int(NSDate().timeIntervalSince1970)
-        let status = !isProfileVisible ? 1 : 0
-        
-        let profileRequest = ProfileRequest(email: HelperMethods.shared.hashString(string: profile!.email), uuid: HelperMethods.shared.getUID(), status: status, deviceId: adID, timestamp: timestamp)
-        guard let uploadData = try? JSONEncoder().encode(profileRequest) else {
-            return
-        }
-        print("uploadData" + String(data: uploadData, encoding: .utf8)!)
-        
-        HelperMethods.shared.sendData(uploadData: uploadData, to: "https://lfdjdev.appconsent.io/status") { bool in
-            if bool {
-                DispatchQueue.main.async {
-                    if self.isProfileVisible {
-                        self.isProfileVisible = false
-                        self.button.backgroundColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
-                        self.buttonLabel.text = "Profile hidden, tap to show"
-                    } else {
-                        self.isProfileVisible = true
-                        self.button.backgroundColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
-                        self.buttonLabel.text = "Profile visible, tap to hide"
-                    }
-                }
-            }
+            self.button.backgroundColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
+            self.buttonLabel.text = "Profile visible, tap to hide"
         }
         
     }
-    
+        
 }
 
 extension MyProfileController: CAAnimationDelegate {

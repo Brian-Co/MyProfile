@@ -1,6 +1,6 @@
 //
 //  MyDataController.swift
-//  Chandago Test
+//  MyProfile
 //
 //  Created by Brian Corrieri on 31/10/2019.
 //  Copyright © 2019 FairTrip. All rights reserved.
@@ -28,9 +28,9 @@ class MyDataController: UICollectionViewController, UICollectionViewDelegateFlow
         
         let defaults = UserDefaults.standard
         if !defaults.bool(forKey: "isUserRegistered") {
-        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ViewController") as! ViewController
-        vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: false, completion: nil)
+            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ViewController") as! ViewController
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc, animated: false, completion: nil)
         }
         
         for _ in 1...5 {
@@ -72,7 +72,7 @@ class MyDataController: UICollectionViewController, UICollectionViewDelegateFlow
             gradient.startPoint = CGPoint(x: 0, y: 0)
             gradient.endPoint = CGPoint(x: 1, y: 0)
 
-            if let image = getImageFrom(gradientLayer: gradient) {
+            if let image = gradient.image() {
                 navigationBar.setBackgroundImage(image, for: UIBarMetrics.default)
             }
             navigationBar.tintColor = .white
@@ -86,15 +86,5 @@ class MyDataController: UICollectionViewController, UICollectionViewDelegateFlow
         }
     }
     
-    func getImageFrom(gradientLayer:CAGradientLayer) -> UIImage? {
-        var gradientImage:UIImage?
-        UIGraphicsBeginImageContext(gradientLayer.frame.size)
-        if let context = UIGraphicsGetCurrentContext() {
-            gradientLayer.render(in: context)
-            gradientImage = UIGraphicsGetImageFromCurrentImageContext()?.resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: .stretch)
-        }
-        UIGraphicsEndImageContext()
-        return gradientImage
-    }
     
 }

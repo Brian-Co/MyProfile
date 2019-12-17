@@ -1,35 +1,14 @@
 //
-//  HelperMethods.swift
-//  Chandago Test
+//  Networking.swift
+//  MyProfile
 //
-//  Created by Brian Corrieri on 31/10/2019.
+//  Created by Brian Corrieri on 17/12/2019.
 //  Copyright © 2019 FairTrip. All rights reserved.
 //
 
 import Foundation
-import CryptoKit
 
-class HelperMethods {
-    
-    static let shared = HelperMethods()
-    
-    func hashString(string: String) -> String {
-            let inputData = Data(string.utf8)
-            let hashed = SHA256.hash(data: inputData)
-            let hashString = hashed.compactMap { String(format: "%02x", $0) }.joined()
-            return hashString
-        }
-        
-    func getUID() -> String {
-        let defaults = UserDefaults.standard
-        if let UID = defaults.string(forKey: "UID") {
-            return UID
-        } else {
-            let UID = UUID().uuidString
-            defaults.set(UID, forKey: "UID")
-            return UID
-        }
-    }
+class Networking {
     
     func getData(urlString: String, completion: @escaping (Data?) -> ()) {
         
@@ -89,5 +68,7 @@ class HelperMethods {
             task.resume()
             
         }
+        
     
 }
+

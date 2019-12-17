@@ -1,6 +1,6 @@
 //
 //  ProfileCompletionView.swift
-//  Chandago Test
+//  MyProfile
 //
 //  Created by Brian Corrieri on 01/11/2019.
 //  Copyright © 2019 FairTrip. All rights reserved.
