@@ -20,6 +20,10 @@
 		D47A774023A8FCA0004ACE0D /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47A773F23A8FCA0004ACE0D /* Profile.swift */; };
 		D47A774223A8FCD0004ACE0D /* ProfileRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47A774123A8FCD0004ACE0D /* ProfileRequest.swift */; };
 		D47A774423A8FDA5004ACE0D /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47A774323A8FDA5004ACE0D /* Account.swift */; };
+		D47A774623A90370004ACE0D /* CreateAccountControllerAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47A774523A90370004ACE0D /* CreateAccountControllerAnimations.swift */; };
+		D47A774823A90438004ACE0D /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47A774723A90438004ACE0D /* CollectionView.swift */; };
+		D47A774A23A90538004ACE0D /* MyProfileControllerAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47A774923A90538004ACE0D /* MyProfileControllerAnimations.swift */; };
+		D47A774C23A9081B004ACE0D /* UINavigationBar+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47A774B23A9081B004ACE0D /* UINavigationBar+Extensions.swift */; };
 		D4C8F67F236CA47B00EB1BE9 /* ProfileCompletionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C8F67E236CA47B00EB1BE9 /* ProfileCompletionView.swift */; };
 		D4D37B582369B89000F09762 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D37B572369B89000F09762 /* AppDelegate.swift */; };
 		D4D37B5A2369B89000F09762 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D37B592369B89000F09762 /* SceneDelegate.swift */; };
@@ -44,6 +48,10 @@
 		D47A773F23A8FCA0004ACE0D /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		D47A774123A8FCD0004ACE0D /* ProfileRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRequest.swift; sourceTree = "<group>"; };
 		D47A774323A8FDA5004ACE0D /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		D47A774523A90370004ACE0D /* CreateAccountControllerAnimations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountControllerAnimations.swift; sourceTree = "<group>"; };
+		D47A774723A90438004ACE0D /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
+		D47A774923A90538004ACE0D /* MyProfileControllerAnimations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileControllerAnimations.swift; sourceTree = "<group>"; };
+		D47A774B23A9081B004ACE0D /* UINavigationBar+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+Extensions.swift"; sourceTree = "<group>"; };
 		D4C8F67E236CA47B00EB1BE9 /* ProfileCompletionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCompletionView.swift; sourceTree = "<group>"; };
 		D4D37B542369B89000F09762 /* MyProfile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyProfile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4D37B572369B89000F09762 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -71,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				D4D37B5B2369B89000F09762 /* ViewController.swift */,
+				D47A774523A90370004ACE0D /* CreateAccountControllerAnimations.swift */,
 			);
 			path = CreateAccountController;
 			sourceTree = "<group>";
@@ -90,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				D4F5C74F236AF89B006E8DB2 /* MyDataController.swift */,
+				D47A774723A90438004ACE0D /* CollectionView.swift */,
 				D40A0EFC236AFFC000CB1E3D /* CollectionViewCell.swift */,
 			);
 			path = MyDataController;
@@ -99,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				D40A0F00236B092D00CB1E3D /* MyProfileController.swift */,
+				D47A774923A90538004ACE0D /* MyProfileControllerAnimations.swift */,
 				D4C8F67E236CA47B00EB1BE9 /* ProfileCompletionView.swift */,
 			);
 			path = MyProfileController;
@@ -110,6 +121,7 @@
 				D47A772D23A8DCC3004ACE0D /* String+Extensions.swift */,
 				D47A773223A8DF49004ACE0D /* UIViewController+Extensions.swift */,
 				D47A773A23A8F282004ACE0D /* CAGradientLayer+Extensions.swift */,
+				D47A774B23A9081B004ACE0D /* UINavigationBar+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -253,8 +265,10 @@
 				D47A773123A8DEB7004ACE0D /* Networking.swift in Sources */,
 				D4C8F67F236CA47B00EB1BE9 /* ProfileCompletionView.swift in Sources */,
 				D47A774423A8FDA5004ACE0D /* Account.swift in Sources */,
+				D47A774823A90438004ACE0D /* CollectionView.swift in Sources */,
 				D47A774223A8FCD0004ACE0D /* ProfileRequest.swift in Sources */,
 				D47A773D23A8F47C004ACE0D /* MyProfileControllerViewModel.swift in Sources */,
+				D47A774A23A90538004ACE0D /* MyProfileControllerAnimations.swift in Sources */,
 				D4D37B5C2369B89000F09762 /* ViewController.swift in Sources */,
 				D47A773923A8E4D9004ACE0D /* Popups.swift in Sources */,
 				D47A773623A8E17B004ACE0D /* CreateAccountViewModel.swift in Sources */,
@@ -263,6 +277,8 @@
 				D40A0F03236B286600CB1E3D /* HelperMethods.swift in Sources */,
 				D40A0EFD236AFFC000CB1E3D /* CollectionViewCell.swift in Sources */,
 				D4D37B5A2369B89000F09762 /* SceneDelegate.swift in Sources */,
+				D47A774C23A9081B004ACE0D /* UINavigationBar+Extensions.swift in Sources */,
+				D47A774623A90370004ACE0D /* CreateAccountControllerAnimations.swift in Sources */,
 				D4F5C750236AF89B006E8DB2 /* MyDataController.swift in Sources */,
 				D40A0F01236B092D00CB1E3D /* MyProfileController.swift in Sources */,
 			);
